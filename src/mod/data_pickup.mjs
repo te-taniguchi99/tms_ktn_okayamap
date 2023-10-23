@@ -23,13 +23,15 @@ export async function DataPickUp(eve) {
     //「保存」押下：typeは"app.record.edit.submit.success"
     //　引数は、保存押下時時点のレコード情報になる
     let record = "";
-
+    let myEveType;
     //TMS採番なので、レコード情報再取得
     if (eve.type === "app.record.edit.show" || eve.type === "app.record.create.show") {
         // console.log('Get record');
         record = kintone.app.record.get().record;
+        myEveType = 'getNumber';
     } else {
         record = eve.record;
+        myEveType = 'save';
     }
 
     // console.log(record);
@@ -80,14 +82,24 @@ export async function DataPickUp(eve) {
 
     //共通フィールﾄﾞデータをobjへ変換していく
     registData.product_name = record['商品名'].value;
+
     //マスタ変換---------------------------------------
+    //
     let master = await trance_master(record['文字列__1行__2'].value);
-    // console.log(master);
+    console.log(master);
     if (master !== -1) {    //マスタに存在する時のみ
         registData.model_number = master.model_number.value;  //型番
         registData.weight = master.weight.value;              //使用荷重
         registData.size = master.size.value;                  //サイズ
         registData.jan_code = master.jan_code.value;          //JANコード
+        //マスタから取得したデータをフォームに表示 
+        console.log(record);
+        record.model_number.value = master.model_number.value;
+        record.weight.value = master.weight.value;
+        record.size.value = master.size.value;
+        //TMS採番ボタンならset　保存ボタンならset不要(というかエラーでる)
+        if (myEveType === 'getNumber') kintone.app.record.set({ record });
+
     }
     //-------------------------------------------------
     registData.major_division = ChangeMajor(record['大分類'].value);

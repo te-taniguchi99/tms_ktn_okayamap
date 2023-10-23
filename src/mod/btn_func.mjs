@@ -7,10 +7,9 @@ export default async function (eve) {
     const addObj = new Kuc.Button({
         text: 'TMS採番',
         type: 'submit',
-        // className: 'options-class',
         id: 'qrAddBtn'
     });
-
+[]
     //描画
     const btnSpace = kintone.app.record.getSpaceElement('tms_btn_space');
     addObj.onclick = async function () {

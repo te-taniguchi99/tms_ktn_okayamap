@@ -5,7 +5,7 @@
  * 正常→0が返る　NG→ -1が返る
  * @param {object} obj 
  */
-export default function (obj,record) {
+export default function (obj, record) {
     /**
      * 必須項目
      * 製品名：product_name,
@@ -68,7 +68,7 @@ export default function (obj,record) {
     //型番桁数 20文字英数
     if (obj.model_number !== undefined) {
         //英数かどうか
-        if (obj.model_number.match(/^[A-Za-z0-9]*$/)) {
+        if (obj.model_number.match(/^[a-zA-Z0-9-_\.]*$/)) {
             //英数字である
             if (obj.model_number.length > 20) {
                 notification.text = "[TMS] 型番は20文字以内です。";
