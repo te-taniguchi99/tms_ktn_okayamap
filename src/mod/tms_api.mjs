@@ -85,7 +85,7 @@ async function Posting(data) {
 
     let hogetan;
     try {
-        hogetan = await kintone.proxy(param.url_dev, 'POST', headers, data);
+        hogetan = await kintone.proxy(param.url_product, 'POST', headers, data);
     } catch (error) {
         let msg = JSON.parse(error).message;
         console.log(msg);
