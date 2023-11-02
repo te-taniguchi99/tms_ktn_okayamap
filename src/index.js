@@ -10,7 +10,7 @@ const registUser = { 'comp_code': 'taiyo', 'user_id': 'adminuser', 'pass_word': 
     kintone.events.on(['app.record.create.show', 'app.record.edit.show'], (e) => {
 
         Init(e);
-        debugInput(e);  //デバッグ用
+        // debugInput(e);  //デバッグ用
         BtnFunc(e);
         // return e;
 
