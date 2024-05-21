@@ -5,8 +5,10 @@
 //登録用ID等
 const param = {
     id: 'dGFpeW86cGVnYXN1czE6cGVzdSM5OTE=',
-    url_dev: 'https://tsuriscope.jp/manager_pre/ApiProducts/add',
-    url_product: 'https://tsuriscope.jp/manager/ApiProducts/add'
+    //プレ環境
+    // url: 'https://tsuriscope.jp/manager_pre/ApiProducts/add',   
+    //本番 
+    url: 'https://tsuriscope.jp/manager/ApiProducts/add'    
 }
 
 /**
@@ -85,7 +87,8 @@ async function Posting(data) {
 
     let hogetan;
     try {
-        hogetan = await kintone.proxy(param.url_product, 'POST', headers, data);
+        // hogetan = await kintone.proxy(param.url_product, 'POST', headers, data);
+        hogetan = await kintone.proxy(param.url, 'POST', headers, data);
     } catch (error) {
         let msg = JSON.parse(error).message;
         console.log(msg);

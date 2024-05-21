@@ -11,7 +11,7 @@ export default async function (e) {
     if (myData === 0) return 0; //保存押下かつUIDが無い場合はTMS_API処理無し
 
     let result = await tms_api(myData);
-    console.log(result);
+    // console.log(result);
 
 }
 

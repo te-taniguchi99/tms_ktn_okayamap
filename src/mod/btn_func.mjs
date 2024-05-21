@@ -9,14 +9,14 @@ export default async function (eve) {
         type: 'submit',
         id: 'qrAddBtn'
     });
-[]
+    
     //描画
     const btnSpace = kintone.app.record.getSpaceElement('tms_btn_space');
     addObj.onclick = async function () {
 
         //regiDataには登録用データが格納される。異常値がある場合は-1が入る。
         let regiData = await DataPickUp(eve);
-        if (regiData == -1 ) return;
+        if (regiData == -1) return;
 
         //API実行
         let res = await tms_api(regiData);

@@ -7,6 +7,7 @@ const registUser = { 'comp_code': 'taiyo', 'user_id': 'adminuser', 'pass_word': 
 (($) => {
     'use strict';
     //新規作成・編集時イベント
+    console.log("tms_ktn_get_uid:start");
     kintone.events.on(['app.record.create.show', 'app.record.edit.show'], (e) => {
 
         Init(e);

@@ -13,7 +13,7 @@ export default async function (prodCode) {
     }
 
     let res = await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', body);
-    // console.log(res);
+    console.log(res);
     //hitしなかった場合、totalCountで判定
     if (res.totalCount === '0') {
         return -1;

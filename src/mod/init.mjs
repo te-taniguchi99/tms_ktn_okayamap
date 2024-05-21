@@ -21,8 +21,8 @@ function TableInit(elm) {
  * 型番・使用荷重・サイズを編集不可に
  */
 function EnabledColumn(elm){
-    console.log(elm);
+    // console.log(elm);
     elm.record.model_number.disabled = true;    //型番
-    elm.record.weight.disabled = true;    //使用荷重
+    elm.record.working_load.disabled = true;    //使用荷重
     elm.record.size.disabled = true;    //サイズ
 }
